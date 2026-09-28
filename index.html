@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jimmy da Costa Stateri | Software Developer</title>
+    <!-- Importing modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Importing FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables for consistent design */
+        :root {
+            --primary-color: #0f172a;      /* Dark Slate */
+            --secondary-color: #3b82f6;    /* Vibrant Blue */
+            --text-main: #334155;          /* Dark Grey for readability */
+            --text-light: #f8fafc;         /* Off-white for dark backgrounds */
+            --bg-body: #f1f5f9;            /* Overall page background */
+            --bg-card: #ffffff;            /* Card background */
+            --border-color: #e2e8f0;
+        }
+
+        /* Reset and Base Configurations */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Main Container using CSS Grid */
+        .cv-container {
+            width: 100%;
+            max-width: 1100px;
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr; /* Default Mobile */
+        }
+
+        /* === SIDEBAR === */
+        .sidebar {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+        }
+
+        .header-title h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: #ffffff;
+        }
+
+        .header-title h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .contact-list {
+            list-style: none;
+            margin-bottom: 3rem;
+        }
+
+        .contact-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .contact-list a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-list a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Sidebar Sections (Skills, Education) */
+        .sidebar-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .sidebar-section h3 {
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--secondary-color);
+            cursor: default;
+        }
+
+        /* === MAIN CONTENT === */
+        .main-content {
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--secondary-color);
+        }
+
+        .profile-text {
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        /* Experience and Projects Cards */
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .timeline-subtitle {
+            font-style: italic;
+            color: #64748b;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content ul {
+            padding-left: 1.2rem;
+        }
+
+        .timeline-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Project Links */
+        .project-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries (Desktop Responsiveness) */
+        @media (min-width: 768px) {
+            .cv-container {
+                grid-template-columns: 320px 1fr; /* Fixed sidebar, fluid main content */
+            }
+            .sidebar {
+                padding: 3rem 2rem;
+            }
+            .main-content {
+                padding: 3rem 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="cv-container">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <header class="header-title">
+                <h1>Jimmy da Costa Stateri</h1>
+                <h2>Software Developer</h2>
+            </header>
+
+            <ul class="contact-list">
+                <li><i class="fa-solid fa-location-dot"></i> Leicestershire, UK</li>
+                <li><i class="fa-solid fa-phone"></i> +44 7452 970786</li>
+                <li><i class="fa-solid fa-envelope"></i> <a href="mailto:jimmy.staterii@gmail.com">jimmy.staterii@gmail.com</a></li>
+                <li><i class="fa-brands fa-linkedin"></i> <a href="https://linkedin.com/in/jimmy-stateri" target="_blank">linkedin.com/in/jimmy-stateri</a></li>
+                <li><i class="fa-brands fa-github"></i> <a href="https://github.com/jstateri" target="_blank">github.com/jstateri</a></li>
+            </ul>
+
+            <section class="sidebar-section">
+                <h3>Technical Skills</h3>
+                
+                <p style="margin: 1rem 0 0.5rem; font-size: 0.9rem; font-weight: 600;">Languages</p>
+                <div class="skills-container">
+                    <span class="skill-badge">TypeScript</span>
+                    <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">SQL</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">C#</span>
+                    <span class="skill-badge">Java</span>
+                </div>
+
+                <p style="margin: 1rem 0 0.5rem; font-size: 0.9rem; font-weight: 600;">Web & APIs</p>
+                <div class="skills-container">
+                    <span class="skill-badge">REST APIs</span>
+                    <span class="skill-badge">GraphQL</span>
+                    <span class="skill-badge">MVC Architecture</span>
+                    <span class="skill-badge">OOP</span>
+                </div>
+
+                <p style="margin: 1rem 0 0.5rem; font-size: 0.9rem; font-weight: 600;">Tools & Databases</p>
+                <div class="skills-container">
+                    <span class="skill-badge">Git & GitHub</span>
+                    <span class="skill-badge">Deno</span>
+                    <span class="skill-badge">MySQL</span>
+                    <span class="skill-badge">SQLite</span>
+                    <span class="skill-badge">Agile</span>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h3>Languages</h3>
+                <div style="font-size: 0.95rem;">
+                    <p><strong>English</strong> - Full Professional</p>
+                    <p><strong>Portuguese</strong> - Native</p>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h3>Education</h3>
+                <div style="font-size: 0.95rem; margin-bottom: 1.5rem;">
+                    <p><strong>BSc (Hons) Computer Science</strong></p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem;">First Class Honours (72%)</p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem;">De Montfort University<br>Sep 2023 - Sep 2026</p>
+                </div>
+                <div style="font-size: 0.95rem;">
+                    <p><strong>T-Level in Digital Production</strong></p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem;">Merit (Level 3 qualification)</p>
+                    <p style="color: #cbd5e1; font-size: 0.85rem;">Leicester College<br>Sep 2021 - Aug 2023</p>
+                </div>
+            </section>
+        </aside>
+
+        <!-- RIGHT MAIN CONTENT -->
+        <section class="main-content">
+            
+            <h2 class="section-title"><i class="fa-solid fa-user"></i> Professional Profile</h2>
+            <p class="profile-text">
+                First Class BSc (Hons) Computer Science graduate from De Montfort University, seeking a first role as a Junior or Graduate Software Developer in the UK. Built three independent full-stack applications in Deno, TypeScript, and SQL using a consistent MVC architecture, including REST and GraphQL API integration, session-based authentication, and relational database design. Complements this with two industry placements completed as part of a Level 3 T-Level. UK-based with full right to work; no visa sponsorship required.
+            </p>
+
+            <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> Selected Projects</h2>
+            
+            <article class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">FilterAnime — Anime Tracker & Browser</h3>
+                </div>
+                <div class="timeline-subtitle">Solo-built local-first web app</div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Browse and filter anime across the AniList (GraphQL) and Jikan/MAL (REST) APIs simultaneously, with no-login watchlist import via username or XML.</li>
+                        <li>Built a Deno (TypeScript) backend acting as a CORS proxy and a vanilla JavaScript MVC frontend.</li>
+                        <li>Engineered an API normalisation layer reconciling disparate data schemas alongside rate-limiting logic.</li>
+                        <li>Added an airing schedule colour-coded to list status and interactive analytics using Chart.js.</li>
+                    </ul>
+                    <a href="https://github.com/jstateri/FilterAnime" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Repository</a>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">ProgHub — University Programme Discovery</h3>
+                </div>
+                <div class="timeline-subtitle">Advanced Web Development module</div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Built a programme-discovery platform for students and staff using pure Deno with the standard library HTTP server — zero frameworks.</li>
+                        <li>Implemented hand-built MVC patterns, SQLite with prepared statements, and session-based authentication using PBKDF2 password hashing and secure cookies.</li>
+                    </ul>
+                    <a href="https://github.com/jstateri/ProgHub" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Repository</a>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Fitness Routine Generator</h3>
+                </div>
+                <div class="timeline-subtitle">Development Project module</div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Developed a deterministic, non-AI workout generator distributing exercises fairly across muscle groups via a base-allocation algorithm.</li>
+                        <li>Designed a normalised SQLite schema mapping 94 exercises to equipment types and implemented native Web Crypto API authentication.</li>
+                    </ul>
+                    <a href="https://github.com/jstateri/Final-Project" target="_blank" class="project-link"><i class="fa-brands fa-github"></i> View Repository</a>
+                </div>
+            </article>
+
+            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Experience</h2>
+
+            <article class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Placement, Institute of Creative Technologies (IOCT)</h3>
+                    <span class="timeline-date">Sep 2022 – Feb 2023</span>
+                </div>
+                <div class="timeline-subtitle">De Montfort University</div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Completed an intensive placement within a transdisciplinary research institute whose partners include Epic Games and the Royal Shakespeare Company.</li>
+                        <li>Built the real-time experience for a walkable virtual village in Unreal Engine (Blueprints) alongside a multidisciplinary team.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="timeline-item">
+                <div class="timeline-header">
+                    <h3 class="timeline-title">Game Developer (Programmer), Placement</h3>
+                    <span class="timeline-date">Jan 2022</span>
+                </div>
+                <div class="timeline-subtitle">National Space Centre, Leicester</div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Conceived and built core gameplay programming for a Unity (C#) platformer as part of a 3-person team.</li>
+                        <li>Implemented custom jump physics matched to real planetary gravity, scoring systems, level progression, and hazard mechanics.</li>
+                    </ul>
+                </div>
+            </article>
+
+        </section>
+    </main>
+</body>
+</html>
